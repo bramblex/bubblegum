@@ -159,20 +159,4 @@ ${BLUE#   }     #####             ##########      ${fieldlist[11]}
 ${BLUE#   }    #####               #######        ${fieldlist[12]}
 ${normal}
 "
-  #echo -e "
-#${GREEN#  }                 ###                  ${fieldlist[0]}
-#${GREEN#  }               ####                   ${fieldlist[1]}
-#${GREEN#  }               ###                    ${fieldlist[2]}
-#${GREEN#  }       #######    #######             ${fieldlist[3]}
-#${YELLOW# }     ######################           ${fieldlist[4]}
-#${YELLOW# }    #####################             ${fieldlist[5]}
-#${RED#    }    ####################              ${fieldlist[6]}
-#${RED#    }    ####################              ${fieldlist[7]}
-#${RED#    }    #####################             ${fieldlist[8]}
-#${PURPLE# }     ######################           ${fieldlist[9]}
-#${PURPLE# }      ####################            ${fieldlist[10]}
-#${BLUE#   }        ################              ${fieldlist[11]}
-#${BLUE#   }         ####     #####               ${fieldlist[12]}
-#${normal}
-#"
 fi
