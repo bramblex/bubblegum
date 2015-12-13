@@ -81,6 +81,7 @@ shell="$SHELL"
 terminal="$TERM ${TERM_PROGRAM//_/ }"
 cpu=$(sysctl -n machdep.cpu.brand_string)
 #battery=$(ioreg -c AppleSmartBattery -r | awk '$1~/Capacity/{c[$1]=$3} END{OFMT="%.2f%%"; max=c["\"MaxCapacity\""]; print (max>0? 100*c["\"CurrentCapacity\""]/max: "?")}')
+battery=$(pmset -g batt | xargs | egrep "\d+%" -o)
 
 # removes (R) and (TM) from the CPU name so it fits in a standard 80 window
 cpu=$(echo "$cpu" | awk '$1=$1' | sed 's/([A-Z]\{1,2\})//g')
@@ -123,18 +124,20 @@ fieldlist[${#fieldlist[@]}]="${textColor}Kernel:${normal} ${kernel}${normal}"
 fieldlist[${#fieldlist[@]}]="${textColor}Uptime:${normal} ${uptime}${normal}"
 fieldlist[${#fieldlist[@]}]="${textColor}Shell:${normal} ${shell}${normal}"
 fieldlist[${#fieldlist[@]}]="${textColor}Terminal:${normal} ${terminal}${normal}"
-if [ ${packagehandler} -ne 0 ]; then
-    fieldlist[${#fieldlist[@]}]="${textColor}Packages:${normal} ${packagehandler}${normal}"
-fi
+#if [ ${packagehandler} -ne 0 ]; then
+    #fieldlist[${#fieldlist[@]}]="${textColor}Packages:${normal} ${packagehandler}${normal}"
+#fi
 fieldlist[${#fieldlist[@]}]="${textColor}CPU:${normal} ${cpu}${normal}"
 fieldlist[${#fieldlist[@]}]="${textColor}Memory:${normal} ${ram}${normal}"
 fieldlist[${#fieldlist[@]}]="${textColor}Disk:${normal} ${disk}${normal}"
-if [ ! -z $battery ]; then
-    fieldlist[${#fieldlist[@]}]="${textColor}Battery:${normal} ${battery}${normal}"
-fi
+#if [ ! -z $battery ]; then
+#fi
+fieldlist[${#fieldlist[@]}]="${textColor}Battery:${normal} ${battery}${normal}"
+
 if [ "${opt_offline}" = f ]; then
     fieldlist[${#fieldlist[@]}]="${textColor}IP Address:${normal} ${ip}${normal}"
 fi
+fieldlist[${#fieldlist[@]}]="${textColor}Date:${normal} $(date)${normal}"
 
 logofile=${ARCHEY_LOGO_FILE:-"${HOME}/.config/archey-logo"}
 if [ -a "$logofile" ]
