@@ -62,17 +62,17 @@ done
 user=$(whoami)
 hostname=$(hostname | sed 's/.local//g')
 
-if [[ "${opt_offline}" = f ]]; then
-    ipfile="${HOME}/.archey-ip"
-    if [ -a "$ipfile" ] && test `find "$ipfile" -mmin -360`; then
-        while read -r line; do
-            ip="$line"
-        done < "$ipfile"
-    else
-        ip=$(dig +short myip.opendns.com @resolver1.opendns.com)
-        echo $ip > "$ipfile"
-    fi
-fi
+#if [[ "${opt_offline}" = f ]]; then
+    #ipfile="${HOME}/.archey-ip"
+    #if [ -a "$ipfile" ] && test `find "$ipfile" -mmin -360`; then
+        #while read -r line; do
+            #ip="$line"
+        #done < "$ipfile"
+    #else
+        #ip=$(dig +short myip.opendns.com @resolver1.opendns.com)
+        #echo $ip > "$ipfile"
+    #fi
+#fi
 
 distro="OS X $(sw_vers -productVersion)"
 kernel=$(uname)
@@ -134,9 +134,10 @@ fieldlist[${#fieldlist[@]}]="${textColor}Disk:${normal} ${disk}${normal}"
 #fi
 fieldlist[${#fieldlist[@]}]="${textColor}Battery:${normal} ${battery}${normal}"
 
-if [ "${opt_offline}" = f ]; then
-    fieldlist[${#fieldlist[@]}]="${textColor}IP Address:${normal} ${ip}${normal}"
-fi
+#if [ "${opt_offline}" = f ]; then
+    #fieldlist[${#fieldlist[@]}]="${textColor}IP Address:${normal} ${ip}${normal}"
+#fi
+
 fieldlist[${#fieldlist[@]}]="${textColor}Date:${normal} $(date)${normal}"
 
 logofile=${ARCHEY_LOGO_FILE:-"${HOME}/.config/archey-logo"}
