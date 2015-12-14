@@ -124,6 +124,7 @@ fieldlist[${#fieldlist[@]}]="${textColor}Kernel:${normal} ${kernel}${normal}"
 fieldlist[${#fieldlist[@]}]="${textColor}Uptime:${normal} ${uptime}${normal}"
 fieldlist[${#fieldlist[@]}]="${textColor}Shell:${normal} ${shell}${normal}"
 fieldlist[${#fieldlist[@]}]="${textColor}Terminal:${normal} ${terminal}${normal}"
+fieldlist[${#fieldlist[@]}]="${textColor}Terminal Size:${normal} $(tput lines) x $(tput cols)"
 #if [ ${packagehandler} -ne 0 ]; then
     #fieldlist[${#fieldlist[@]}]="${textColor}Packages:${normal} ${packagehandler}${normal}"
 #fi
